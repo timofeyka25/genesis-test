@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"net/smtp"
 	"os"
@@ -69,6 +70,7 @@ func (a API) SendMail(toEmails []string, message string) []string {
 		if err != nil {
 			invalidEmails = append(invalidEmails, v)
 		}
+		log.Printf("Sending to %s ...", v)
 	}
 	return invalidEmails
 }
